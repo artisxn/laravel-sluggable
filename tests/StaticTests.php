@@ -1,16 +1,15 @@
-<?php namespace codicastudio\sluggable\Tests;
+<?php
+
+namespace codicastudio\sluggable\Tests;
 
 use codicastudio\sluggable\Services\SlugService;
 use codicastudio\sluggable\Tests\Models\Post;
 
 /**
- * Class StaticTests
- *
- * @package Tests
+ * Class StaticTests.
  */
 class StaticTests extends TestCase
 {
-
     /**
      * Test that we can generate a slug statically.
      */
@@ -25,7 +24,7 @@ class StaticTests extends TestCase
      */
     public function testStaticSlugGeneratorWhenEntriesExist()
     {
-        $post = Post::create(['title' => 'My Test Post']);
+        $post = Post::create(array('title' => 'My Test Post'));
         $this->assertEquals('my-test-post', $post->slug);
 
         $slug = SlugService::createSlug(Post::class, 'slug', 'My Test Post');
@@ -37,15 +36,15 @@ class StaticTests extends TestCase
      */
     public function testStaticSlugGeneratorWithConfig()
     {
-        $config = [
-            'separator' => '.'
-        ];
+        $config = array(
+            'separator' => '.',
+        );
         $slug = SlugService::createSlug(Post::class, 'slug', 'My Test Post', $config);
         $this->assertEquals('my.test.post', $slug);
     }
 
     /**
-     * Test passing an invalid attribute to static method
+     * Test passing an invalid attribute to static method.
      */
     public function testStaticSlugWithInvalidAttribute()
     {

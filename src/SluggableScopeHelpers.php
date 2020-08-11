@@ -1,18 +1,17 @@
-<?php namespace codicastudio\sluggable;
+<?php
+
+namespace codicastudio\sluggable;
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Class SluggableScopeHelpers
+ * Class SluggableScopeHelpers.
  *
  * Helper trait for defining the primary slug of a model
  * and providing useful scopes and query methods.
- *
- * @package codicastudio\sluggable
  */
 trait SluggableScopeHelpers
 {
-
     /**
      * Primary slug column of this model.
      *
@@ -65,7 +64,7 @@ trait SluggableScopeHelpers
      * @param array $columns
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
      */
-    public static function findBySlug(string $slug, array $columns = ['*'])
+    public static function findBySlug(string $slug, array $columns = array('*'))
     {
         return static::whereSlug($slug)->first($columns);
     }
@@ -79,7 +78,7 @@ trait SluggableScopeHelpers
      *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
-    public static function findBySlugOrFail(string $slug, array $columns = ['*'])
+    public static function findBySlugOrFail(string $slug, array $columns = array('*'))
     {
         return static::whereSlug($slug)->firstOrFail($columns);
     }

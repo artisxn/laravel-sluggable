@@ -1,13 +1,12 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithMultipleSlugs
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostWithMultipleSlugs.
  */
 class PostWithMultipleSlugs extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -15,14 +14,14 @@ class PostWithMultipleSlugs extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
-            ],
-            'dummy' => [
+            ),
+            'dummy' => array(
                 'source' => 'subtitle',
                 'separator' => '.',
-            ],
-        ];
+            ),
+        );
     }
 }

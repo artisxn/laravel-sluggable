@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithReservedSlug
+ * Class PostWithReservedSlug.
  *
  * A test model that uses custom reserved slug names.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithReservedSlug extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -17,11 +16,11 @@ class PostWithReservedSlug extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
-                'reserved' => ['add','add-1']
-            ]
-        ];
+                'reserved' => array('add', 'add-1'),
+            ),
+        );
     }
 }

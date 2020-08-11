@@ -1,13 +1,12 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostShortConfig
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostShortConfig.
  */
 class PostShortConfig extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -15,8 +14,8 @@ class PostShortConfig extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug'
-        ];
+        return array(
+            'slug',
+        );
     }
 }

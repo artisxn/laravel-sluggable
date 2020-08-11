@@ -1,16 +1,15 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostWithUniqueSlugConstraints
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostWithUniqueSlugConstraints.
  */
 class PostWithUniqueSlugConstraints extends Post
 {
-
     /**
      * Relation to Author model.
      *
@@ -35,5 +34,4 @@ class PostWithUniqueSlugConstraints extends Post
 
         return $query->where('author_id', $author->getKey());
     }
-
 }

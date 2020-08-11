@@ -1,30 +1,29 @@
-<?php namespace codicastudio\sluggable\Tests;
+<?php
+
+namespace codicastudio\sluggable\Tests;
 
 use codicastudio\sluggable\Tests\Models\Post;
 use codicastudio\sluggable\Tests\Models\PostWithOnUpdate;
 
 /**
- * Class OnUpdateTests
- *
- * @package Tests
+ * Class OnUpdateTests.
  */
 class OnUpdateTests extends TestCase
 {
-
     /**
      * Test that the slug isn't regenerated if onUpdate is false.
      */
     public function testSlugDoesntChangeWithoutOnUpdate()
     {
-        $post = Post::create([
-            'title' => 'My First Post'
-        ]);
+        $post = Post::create(array(
+            'title' => 'My First Post',
+        ));
         $post->save();
         $this->assertEquals('my-first-post', $post->slug);
 
-        $post->update([
-            'title' => 'A New Title'
-        ]);
+        $post->update(array(
+            'title' => 'A New Title',
+        ));
         $this->assertEquals('my-first-post', $post->slug);
     }
 
@@ -33,16 +32,16 @@ class OnUpdateTests extends TestCase
      */
     public function testSlugDoesChangeWhenEmptiedManually()
     {
-        $post = Post::create([
-            'title' => 'My First Post'
-        ]);
+        $post = Post::create(array(
+            'title' => 'My First Post',
+        ));
         $post->save();
         $this->assertEquals('my-first-post', $post->slug);
 
         $post->slug = null;
-        $post->update([
-            'title' => 'A New Title'
-        ]);
+        $post->update(array(
+            'title' => 'A New Title',
+        ));
         $this->assertEquals('a-new-title', $post->slug);
     }
 
@@ -51,15 +50,15 @@ class OnUpdateTests extends TestCase
      */
     public function testSlugDoesChangeWithOnUpdate()
     {
-        $post = PostWithOnUpdate::create([
-            'title' => 'My First Post'
-        ]);
+        $post = PostWithOnUpdate::create(array(
+            'title' => 'My First Post',
+        ));
         $post->save();
         $this->assertEquals('my-first-post', $post->slug);
 
-        $post->update([
-            'title' => 'A New Title'
-        ]);
+        $post->update(array(
+            'title' => 'A New Title',
+        ));
         $this->assertEquals('a-new-title', $post->slug);
     }
 
@@ -69,15 +68,15 @@ class OnUpdateTests extends TestCase
      */
     public function testSlugDoesNotChangeIfSourceDoesNotChange()
     {
-        $post = PostWithOnUpdate::create([
-            'title' => 'My First Post'
-        ]);
+        $post = PostWithOnUpdate::create(array(
+            'title' => 'My First Post',
+        ));
         $post->save();
         $this->assertEquals('my-first-post', $post->slug);
 
-        $post->update([
-            'subtitle' => 'A Subtitle'
-        ]);
+        $post->update(array(
+            'subtitle' => 'A Subtitle',
+        ));
         $this->assertEquals('my-first-post', $post->slug);
     }
 
@@ -90,18 +89,18 @@ class OnUpdateTests extends TestCase
      */
     public function testSlugDoesNotChangeIfSourceDoesNotChangeMultiple()
     {
-        $data = [
-            'title' => 'My First Post'
-        ];
+        $data = array(
+            'title' => 'My First Post',
+        );
         $post0 = PostWithOnUpdate::create($data);
         $post1 = PostWithOnUpdate::create($data);
         $post2 = PostWithOnUpdate::create($data);
         $post3 = PostWithOnUpdate::create($data);
         $this->assertEquals('my-first-post-3', $post3->slug);
 
-        $post3->update([
-            'subtitle' => 'A Subtitle'
-        ]);
+        $post3->update(array(
+            'subtitle' => 'A Subtitle',
+        ));
         $this->assertEquals('my-first-post-3', $post3->slug);
     }
 
@@ -111,15 +110,15 @@ class OnUpdateTests extends TestCase
      */
     public function testSlugDoesNotChangeIfSourceNotProvidedInModel()
     {
-        $post = Post::create([
-            'title' => 'My First Post'
-        ]);
+        $post = Post::create(array(
+            'title' => 'My First Post',
+        ));
         $this->assertEquals('my-first-post', $post->slug);
 
-        $post = Post::whereKey($post->id)->get(['id','subtitle'])->first();
-        $post->update([
-            'subtitle' => 'A Subtitle'
-        ]);
+        $post = Post::whereKey($post->id)->get(array('id', 'subtitle'))->first();
+        $post->update(array(
+            'subtitle' => 'A Subtitle',
+        ));
 
         $post = Post::findOrFail($post->id);
         $this->assertEquals('my-first-post', $post->slug);

@@ -1,18 +1,16 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use Cocur\Slugify\Slugify;
 
-
 /**
- * Class PostCustomEngine
+ * Class PostCustomEngine.
  *
  * A test model that customizes the Slugify engine with custom rules.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithCustomEngine extends Post
 {
-
     /**
      * @param \Cocur\Slugify\Slugify $engine
      * @param string $attribute

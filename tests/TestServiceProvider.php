@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests;
+<?php
+
+namespace codicastudio\sluggable\Tests;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
- * Class TestServiceProvider
- *
- * @package codicastudio\sluggable
+ * Class TestServiceProvider.
  */
 class TestServiceProvider extends BaseServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -25,7 +24,7 @@ class TestServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(
-            __DIR__ . '/database/migrations'
+            __DIR__.'/database/migrations'
         );
     }
 }

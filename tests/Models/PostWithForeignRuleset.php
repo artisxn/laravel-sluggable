@@ -1,17 +1,16 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use Cocur\Slugify\Slugify;
 
 /**
- * Class PostWithForeignRuleset
+ * Class PostWithForeignRuleset.
  *
  * A test model that customizes the Slugify engine with a foreign ruleset.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithForeignRuleset extends Post
 {
-
     /**
      * @param \Cocur\Slugify\Slugify $engine
      * @param string $attribute

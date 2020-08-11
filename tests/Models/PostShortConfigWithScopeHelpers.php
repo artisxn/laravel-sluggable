@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use codicastudio\sluggable\SluggableScopeHelpers;
 
 /**
- * Class PostShortConfigWithScopeHelpers
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostShortConfigWithScopeHelpers.
  */
 class PostShortConfigWithScopeHelpers extends Post
 {
-
     use SluggableScopeHelpers;
 
     /**
@@ -19,8 +18,8 @@ class PostShortConfigWithScopeHelpers extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug_field'
-        ];
+        return array(
+            'slug_field',
+        );
     }
 }

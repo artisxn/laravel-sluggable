@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithNoSource
+ * Class PostWithNoSource.
  *
  * A test model with no source field defined.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithNoSource extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -17,10 +16,10 @@ class PostWithNoSource extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
-                'source' => null
-            ]
-        ];
+        return array(
+            'slug' => array(
+                'source' => null,
+            ),
+        );
     }
 }

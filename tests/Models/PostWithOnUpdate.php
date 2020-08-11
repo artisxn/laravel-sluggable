@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithOnUpdate
+ * Class PostWithOnUpdate.
  *
  * A test model that uses the onUpdate functionality.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithOnUpdate extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -17,11 +16,11 @@ class PostWithOnUpdate extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
-                'onUpdate' => true
-            ]
-        ];
+                'onUpdate' => true,
+            ),
+        );
     }
 }

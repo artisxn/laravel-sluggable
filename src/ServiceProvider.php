@@ -1,4 +1,6 @@
-<?php namespace codicastudio\sluggable;
+<?php
+
+namespace codicastudio\sluggable;
 
 use codicastudio\sluggable\Services\SlugService;
 use Illuminate\Foundation\Application as LaravelApplication;
@@ -6,13 +8,10 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
 
 /**
- * Class ServiceProvider
- *
- * @package codicastudio\sluggable
+ * Class ServiceProvider.
  */
 class ServiceProvider extends BaseServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      */
@@ -26,17 +25,17 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(SluggableObserver::class, function($app) {
+        $this->app->singleton(SluggableObserver::class, function ($app) {
             return new SluggableObserver(new SlugService(), $app['events']);
         });
     }
 
     protected function setUpConfig()
     {
-        $source = dirname(__DIR__) . '/resources/config/sluggable.php';
+        $source = dirname(__DIR__).'/resources/config/sluggable.php';
 
         if ($this->app instanceof LaravelApplication) {
-            $this->publishes([$source => config_path('sluggable.php')], 'config');
+            $this->publishes(array($source => config_path('sluggable.php')), 'config');
         } elseif ($this->app instanceof LumenApplication) {
             $this->app->configure('sluggable');
         }
