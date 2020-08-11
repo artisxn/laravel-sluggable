@@ -1,17 +1,16 @@
-<?php namespace codicastudio\sluggable;
+<?php
+
+namespace codicastudio\sluggable;
 
 use codicastudio\sluggable\Services\SlugService;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class SluggableObserver
- *
- * @package codicastudio\sluggable
+ * Class SluggableObserver.
  */
 class SluggableObserver
 {
-
     /**
      * @var \codicastudio\sluggable\Services\SlugService
      */
@@ -36,7 +35,7 @@ class SluggableObserver
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
-     * @return boolean|null
+     * @return bool|null
      */
     public function saving(Model $model)
     {
@@ -46,7 +45,7 @@ class SluggableObserver
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
      * @param string $event
-     * @return boolean|void
+     * @return bool|void
      */
     protected function generateSlug(Model $model, string $event)
     {
@@ -68,7 +67,7 @@ class SluggableObserver
      */
     protected function fireSluggingEvent(Model $model, string $event)
     {
-        return $this->events->until('eloquent.slugging: ' . get_class($model), [$model, $event]);
+        return $this->events->until('eloquent.slugging: '.get_class($model), array($model, $event));
     }
 
     /**
@@ -79,6 +78,6 @@ class SluggableObserver
      */
     protected function fireSluggedEvent(Model $model, string $status)
     {
-        $this->events->dispatch('eloquent.slugged: ' . get_class($model), [$model, $status]);
+        $this->events->dispatch('eloquent.slugged: '.get_class($model), array($model, $status));
     }
 }

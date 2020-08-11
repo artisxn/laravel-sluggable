@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithCustomSource
+ * Class PostWithCustomSource.
  *
  * A test model that uses a custom suffix generation method.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithCustomSource extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -17,10 +16,10 @@ class PostWithCustomSource extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
-                'source' => 'subtitle'
-            ]
-        ];
+        return array(
+            'slug' => array(
+                'source' => 'subtitle',
+            ),
+        );
     }
 }

@@ -1,13 +1,11 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithMultipleSlugsAndCustomSlugKey
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostWithMultipleSlugsAndCustomSlugKey.
  */
 class PostWithMultipleSlugsAndCustomSlugKey extends PostWithMultipleSlugsAndHelperTrait
 {
-
     protected $slugKeyName = 'dummy';
-    
 }

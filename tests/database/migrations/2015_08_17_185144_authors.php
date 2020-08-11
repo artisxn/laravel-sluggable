@@ -3,13 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-
 /**
- * Class Authors
+ * Class Authors.
  */
 class Authors extends Migration
 {
-
     /**
      * Run the migrations.
      *

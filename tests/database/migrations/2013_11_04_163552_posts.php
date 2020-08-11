@@ -3,13 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-
 /**
- * Class Posts
+ * Class Posts.
  */
 class Posts extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -37,5 +35,4 @@ class Posts extends Migration
     {
         Schema::drop('posts');
     }
-
 }

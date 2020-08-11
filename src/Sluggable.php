@@ -1,17 +1,16 @@
-<?php namespace codicastudio\sluggable;
+<?php
+
+namespace codicastudio\sluggable;
 
 use codicastudio\sluggable\Services\SlugService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Sluggable
- *
- * @package codicastudio\sluggable
+ * Class Sluggable.
  */
 trait Sluggable
 {
-
     /**
      * Hook into the Eloquent model events to create or
      * update the slug as required.
@@ -68,9 +67,9 @@ trait Sluggable
     {
         $separator = $config['separator'];
 
-        return $query->where(function(Builder $q) use ($attribute, $slug, $separator) {
+        return $query->where(function (Builder $q) use ($attribute, $slug, $separator) {
             $q->where($attribute, '=', $slug)
-                ->orWhere($attribute, 'LIKE', $slug . $separator . '%');
+                ->orWhere($attribute, 'LIKE', $slug.$separator.'%');
         });
     }
 

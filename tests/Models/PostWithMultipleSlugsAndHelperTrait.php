@@ -1,15 +1,13 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use codicastudio\sluggable\SluggableScopeHelpers;
 
 /**
- * Class PostWithMultipleSlugsAndPrimary
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostWithMultipleSlugsAndPrimary.
  */
 class PostWithMultipleSlugsAndHelperTrait extends PostWithMultipleSlugs
 {
-
     use SluggableScopeHelpers;
-
 }

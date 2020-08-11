@@ -1,23 +1,23 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use codicastudio\sluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Post
+ * Class Post.
  *
- * @package codicastudio\sluggable\Tests\Models
  *
- * @property integer id
+ * @property int id
  * @property string title
  * @property string|null subtitle
  * @property string|null slug
  * @property string|null dummy
- * @property integer author_id
+ * @property int author_id
  */
 class Post extends Model
 {
-
     use Sluggable;
 
     /**
@@ -39,7 +39,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'subtitle', 'slug', 'dummy', 'author_id'];
+    protected $fillable = array('title', 'subtitle', 'slug', 'dummy', 'author_id');
 
     /**
      * Convert the model to its string representation.
@@ -58,10 +58,10 @@ class Post extends Model
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
+        return array(
+            'slug' => array(
+                'source' => 'title',
+            ),
+        );
     }
 }

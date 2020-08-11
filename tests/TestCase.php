@@ -1,4 +1,6 @@
-<?php namespace codicastudio\sluggable\Tests;
+<?php
+
+namespace codicastudio\sluggable\Tests;
 
 use codicastudio\sluggable\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -6,23 +8,20 @@ use Mockery;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
- * Class TestCase
- *
- * @package Tests
+ * Class TestCase.
  */
 abstract class TestCase extends Orchestra
 {
-
     /**
      * Setup the test environment.
      *
      * @return void
      */
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 
-        $this->artisan('migrate', ['--database' => 'testbench']);
+        $this->artisan('migrate', array('--database' => 'testbench'));
 
         $this->beforeApplicationDestroyed(function () {
             $this->artisan('migrate:rollback');
@@ -39,11 +38,11 @@ abstract class TestCase extends Orchestra
     {
         // set up database configuration
         $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
+        $app['config']->set('database.connections.testbench', array(
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
-        ]);
+        ));
     }
 
     /**
@@ -53,10 +52,10 @@ abstract class TestCase extends Orchestra
      */
     protected function getPackageProviders($app)
     {
-        return [
+        return array(
             ServiceProvider::class,
-            TestServiceProvider::class
-        ];
+            TestServiceProvider::class,
+        );
     }
 
     /**

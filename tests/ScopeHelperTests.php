@@ -1,27 +1,25 @@
-<?php namespace codicastudio\sluggable\Tests;
+<?php
+
+namespace codicastudio\sluggable\Tests;
 
 use codicastudio\sluggable\Tests\Models\PostShortConfigWithScopeHelpers;
 use codicastudio\sluggable\Tests\Models\PostWithMultipleSlugsAndCustomSlugKey;
 use codicastudio\sluggable\Tests\Models\PostWithMultipleSlugsAndHelperTrait;
 
 /**
- * Class ScopeHelperTests
- *
- * @package Tests
+ * Class ScopeHelperTests.
  */
 class ScopeHelperTests extends TestCase
 {
-
     /**
      * Test that primary slug is set to $model->slugKeyName when set.
      */
     public function testSlugKeyNameProperty()
     {
-
-        $post = PostWithMultipleSlugsAndCustomSlugKey::create([
+        $post = PostWithMultipleSlugsAndCustomSlugKey::create(array(
             'title' => 'A Post Title',
-            'subtitle' => 'A Post Subtitle'
-        ]);
+            'subtitle' => 'A Post Subtitle',
+        ));
 
         $this->assertEquals('dummy', $post->getSlugKeyName());
         $this->assertEquals('a.post.subtitle', $post->dummy);
@@ -33,9 +31,9 @@ class ScopeHelperTests extends TestCase
      */
     public function testFirstSlugAsFallback()
     {
-        $post = PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title'
-        ]);
+        $post = PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title',
+        ));
 
         $this->assertEquals('slug', $post->getSlugKeyName());
         $this->assertEquals('a-post-title', $post->getSlugKey());
@@ -46,18 +44,17 @@ class ScopeHelperTests extends TestCase
      */
     public function testQueryScope()
     {
+        PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title A',
+        ));
 
-        PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title A'
-        ]);
+        $post = PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title B',
+        ));
 
-        $post = PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title B'
-        ]);
-
-        PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title C'
-        ]);
+        PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title C',
+        ));
 
         $this->assertEquals($post->getKey(),
             PostWithMultipleSlugsAndHelperTrait::whereSlug('a-post-title-b')->first()->getKey());
@@ -68,18 +65,17 @@ class ScopeHelperTests extends TestCase
      */
     public function testFindBySlug()
     {
+        PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title A',
+        ));
 
-        PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title A'
-        ]);
+        $post = PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title B',
+        ));
 
-        $post = PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title B'
-        ]);
-
-        PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title C'
-        ]);
+        PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title C',
+        ));
 
         $this->assertEquals($post->getKey(),
             PostWithMultipleSlugsAndHelperTrait::findBySlug('a-post-title-b')->getKey());
@@ -98,17 +94,17 @@ class ScopeHelperTests extends TestCase
      */
     public function testFindBySlugOrFail()
     {
-        PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title A'
-        ]);
+        PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title A',
+        ));
 
-        $post = PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title B'
-        ]);
+        $post = PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title B',
+        ));
 
-        PostWithMultipleSlugsAndHelperTrait::create([
-            'title' => 'A Post Title C'
-        ]);
+        PostWithMultipleSlugsAndHelperTrait::create(array(
+            'title' => 'A Post Title C',
+        ));
 
         $this->assertEquals($post->getKey(),
             PostWithMultipleSlugsAndHelperTrait::findBySlugOrFail('a-post-title-b')->getKey());

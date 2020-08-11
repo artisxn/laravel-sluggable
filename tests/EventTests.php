@@ -1,17 +1,16 @@
-<?php namespace codicastudio\sluggable\Tests;
+<?php
+
+namespace codicastudio\sluggable\Tests;
 
 use codicastudio\sluggable\Tests\Listeners\AbortSlugging;
 use codicastudio\sluggable\Tests\Listeners\DoNotAbortSlugging;
 use codicastudio\sluggable\Tests\Models\Post;
 
 /**
- * Class EventTests
- *
- * @package Tests
+ * Class EventTests.
  */
 class EventTests extends TestCase
 {
-
     /**
      * Test that the "slugging" event is fired.
      *
@@ -21,14 +20,14 @@ class EventTests extends TestCase
     {
         $this->markTestIncomplete('Event tests are not yet reliable.');
 
-        Post::create([
-            'title' => 'My Test Post'
-        ]);
+        Post::create(array(
+            'title' => 'My Test Post',
+        ));
 
-        $this->expectsEvents([
-            'eloquent.slugging: ' . Post::class,
-            'eloquent.slugged: ' . Post::class,
-        ]);
+        $this->expectsEvents(array(
+            'eloquent.slugging: '.Post::class,
+            'eloquent.slugged: '.Post::class,
+        ));
     }
 
     /**
@@ -40,19 +39,19 @@ class EventTests extends TestCase
     {
         $this->markTestIncomplete('Event tests are not yet reliable.');
 
-        $this->app['events']->listen('eloquent.slugging: ' . Post::class, DoNotAbortSlugging::class);
+        $this->app['events']->listen('eloquent.slugging: '.Post::class, DoNotAbortSlugging::class);
 
-        $post = Post::create([
-            'title' => 'My Test Post'
-        ]);
+        $post = Post::create(array(
+            'title' => 'My Test Post',
+        ));
 
-        $this->expectsEvents([
-            'eloquent.slugging: ' . Post::class,
-        ]);
+        $this->expectsEvents(array(
+            'eloquent.slugging: '.Post::class,
+        ));
 
-        $this->doesntExpectEvents([
-            'eloquent.slugged: ' . Post::class,
-        ]);
+        $this->doesntExpectEvents(array(
+            'eloquent.slugged: '.Post::class,
+        ));
 
         $this->assertEquals('my-test-post', $post->slug);
     }
@@ -61,19 +60,19 @@ class EventTests extends TestCase
     {
         $this->markTestIncomplete('Event tests are not yet reliable.');
 
-        $this->app['events']->listen('eloquent.slugging: ' . Post::class, AbortSlugging::class);
+        $this->app['events']->listen('eloquent.slugging: '.Post::class, AbortSlugging::class);
 
-        $post = Post::create([
-            'title' => 'My Test Post'
-        ]);
+        $post = Post::create(array(
+            'title' => 'My Test Post',
+        ));
 
-        $this->expectsEvents([
-            'eloquent.slugging: ' . Post::class,
-        ]);
+        $this->expectsEvents(array(
+            'eloquent.slugging: '.Post::class,
+        ));
 
-        $this->doesntExpectEvents([
-            'eloquent.slugged: ' . Post::class,
-        ]);
+        $this->doesntExpectEvents(array(
+            'eloquent.slugged: '.Post::class,
+        ));
 
         $this->assertEquals(null, $post->slug);
     }
@@ -87,9 +86,9 @@ class EventTests extends TestCase
     {
         $this->markTestIncomplete('Event tests are not yet reliable.');
 
-        $post = Post::create([
-            'title' => 'My Test Post'
-        ]);
+        $post = Post::create(array(
+            'title' => 'My Test Post',
+        ));
 
         $this->assertEquals('my-test-post', $post->slug);
         $this->assertEquals('I have been slugged!', $post->subtitle);

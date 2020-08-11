@@ -1,16 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use Illuminate\Support\Str;
 
-
 /**
- * Class PostWithCustomCallableMethod
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostWithCustomCallableMethod.
  */
 class PostWithCustomCallableMethod extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -18,15 +16,16 @@ class PostWithCustomCallableMethod extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
-                'method' => [ static::class, 'makeSlug' ]
-            ]
-        ];
+                'method' => array(static::class, 'makeSlug'),
+            ),
+        );
     }
 
-    public static function makeSlug($string, $separator) {
+    public static function makeSlug($string, $separator)
+    {
         return strrev(Str::slug($string, $separator));
     }
 }

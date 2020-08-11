@@ -1,13 +1,12 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithMaxLength
- *
- * @package codicastudio\sluggable\Tests\Models
+ * Class PostWithMaxLength.
  */
 class PostWithMaxLengthSplitWords extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -15,12 +14,12 @@ class PostWithMaxLengthSplitWords extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
                 'maxLength' => 10,
                 'maxLengthKeepWords' => false,
-            ],
-        ];
+            ),
+        );
     }
 }

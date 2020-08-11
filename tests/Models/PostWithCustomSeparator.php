@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithCustomSeparator
+ * Class PostWithCustomSeparator.
  *
  * A test model that uses a custom suffix generation method.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithCustomSeparator extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -17,11 +16,11 @@ class PostWithCustomSeparator extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
-                'separator' => '.'
-            ]
-        ];
+                'separator' => '.',
+            ),
+        );
     }
 }

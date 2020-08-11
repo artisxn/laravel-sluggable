@@ -1,20 +1,20 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Author
+ * Class Author.
  *
  * A test model used for the relationship tests.
  *
- * @package codicastudio\sluggable\Tests\Models
  *
- * @property integer id
+ * @property int id
  * @property string name
  */
 class Author extends Model
 {
-
     /**
      * Indicates if the model should be timestamped.
      *
@@ -27,5 +27,5 @@ class Author extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = array('name');
 }

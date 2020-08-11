@@ -1,17 +1,17 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithRelation
+ * Class PostWithRelation.
  *
  * A test model used for the relationship tests.
  *
- * @package codicastudio\sluggable\Tests\Models
  *
  * @property \codicastudio\sluggable\Tests\Models\Author author
  */
 class PostWithRelation extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -19,11 +19,11 @@ class PostWithRelation extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
-                'source' => ['author.name', 'title'],
-            ]
-        ];
+        return array(
+            'slug' => array(
+                'source' => array('author.name', 'title'),
+            ),
+        );
     }
 
     /**

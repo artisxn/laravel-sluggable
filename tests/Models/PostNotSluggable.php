@@ -1,17 +1,16 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostNotSluggable
+ * Class PostNotSluggable.
  *
  * A test model that doesn't use the Sluggable package.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostNotSluggable extends Model
 {
-
     /**
      * The table associated with the model.
      *
@@ -31,7 +30,7 @@ class PostNotSluggable extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'subtitle'];
+    protected $fillable = array('title', 'subtitle');
 
     /**
      * Convert the model to its string representation.

@@ -1,15 +1,14 @@
-<?php namespace codicastudio\sluggable\Tests\Models;
+<?php
+
+namespace codicastudio\sluggable\Tests\Models;
 
 /**
- * Class PostWithEmptySeparator
+ * Class PostWithEmptySeparator.
  *
  * A test model that uses an empty separator.
- *
- * @package codicastudio\sluggable\Tests\Models
  */
 class PostWithEmptySeparator extends Post
 {
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -17,11 +16,11 @@ class PostWithEmptySeparator extends Post
      */
     public function sluggable()
     {
-        return [
-            'slug' => [
+        return array(
+            'slug' => array(
                 'source' => 'title',
                 'separator' => '',
-            ]
-        ];
+            ),
+        );
     }
 }
