@@ -15,3 +15,5 @@ yarn-error.log
 /vscode 
 coverage
 build
+.DS_Store
+
